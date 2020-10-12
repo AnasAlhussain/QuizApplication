@@ -1,0 +1,142 @@
+﻿@page "/Quiz"
+@inherits QuizListBase
+@inject IJSRuntime JSRuntime;
+
+<h3>Quiz List</h3>
+
+<p>
+    <a href="CreateQuiz" class="btn btn-primary">Create New</a>
+</p>
+@if (Quizzes == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="card-deck">
+        @foreach (var quizzes in Quizzes)
+        {
+        <div class="card m-3 AllcardShadow" style="min-width: 18rem; max-width: 30.5%;">
+            <div class="card-header cardheader">
+                <h3 class="EmpName">@quizzes.AnswerId</h3>
+            </div>
+            <div class="card-body">
+                <SfDatePicker TValue="DateTime?" Value="@DateValue" Format="dd-MM-yyyy"></SfDatePicker>
+            </div>
+            <div class="card-body">
+                <h5>@quizzes.Title</h5>
+            </div>
+
+            @if (quizzes.QuizType == Models.QuizTypes.RedYellowGreen_WhithText)
+            {
+                <div class="card-body text-center">
+                    <button type="button" value="Add" class="btn btn-success"><i class="far fa-smile"></i></button>
+                    <button type="button" class="btn btn-warning"><i class="far fa-meh"></i></button>
+                    <button type="button" class="btn btn-danger"><i class="far fa-angry"></i></button>
+                </div>
+                <div class="card-body">
+                    <div class="form-group shadow-textarea">
+                        <label for="exampleFormControlTextarea6">Your Text</label>
+                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+                    </div>
+                </div>
+
+            }@if (quizzes.QuizType == Models.QuizTypes.RedYellowGreen_WhithoutText)
+            {
+                <div class="card-body text-center">
+                    <button type="button" class="btn btn-success"><i class="far fa-smile"></i></button>
+                    <button type="button" class="btn btn-warning"><i class="far fa-meh"></i></button>
+                    <button type="button" class="btn btn-danger"><i class="far fa-angry"></i></button>
+                </div>
+                
+
+            }
+            @if (quizzes.QuizType == Models.QuizTypes.Text)
+            {
+                <div class="card-body">
+                    <div class="form-group shadow-textarea">
+                        <label for="exampleFormControlTextarea6">Your Text</label>
+                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+                    </div>
+                </div>
+            }@if (quizzes.QuizType == Models.QuizTypes.Yes_No)
+            {
+                <div class="card-body">
+                    <p>Pick an answer please</p>
+
+                    <ul>
+                        <li>
+                            <input type="radio" name="name" id="one" checked />
+                            <label for="one">Yes</label>
+
+                            <div class="check"></div>
+                        </li>
+
+                        <li>
+                            <input type="radio" name="name" id="two" />
+                            <label for="two">No</label>
+
+                            <div class="check"></div>
+                        </li>
+                    </ul>
+                </div>
+            }@if (quizzes.QuizType == Models.QuizTypes.Alternativ)
+            {
+                <div class="card-body">
+                    <p>Pick an answer please</p>
+
+                    <ul>
+                        <li>
+                            <input type="radio" name="name" id="one" checked />
+                            <label for="one">Solving a problem</label>
+
+                            <div class="check"></div>
+                        </li>
+
+                        <li>
+                            <input type="radio" name="name" id="two" />
+                            <label for="two">Relaxing</label>
+
+                            <div class="check"></div>
+                        </li>
+                        <li>
+                            <input type="radio" name="name" id="Three" />
+                            <label for="two">Working</label>
+
+                            <div class="check"></div>
+                        </li>
+                        <li>
+                            <input type="radio" name="name" id="four" />
+                            <label for="two">No thing</label>
+
+                            <div class="check"></div>
+                        </li>
+                    </ul>
+                </div>
+            }@if (quizzes.QuizType == Models.QuizTypes.Date)
+            {
+                <div class="card-body">
+                    <SfDatePicker TValue="DateTime?" Placeholder='Choose a Date please' Format="dd-MM-yyyy"></SfDatePicker>
+
+                </div>
+            }
+            <button type="submit" value="CreateAnswer" @ class="button button4 btn btn-success">OK</button>
+
+
+
+            <div class="card-footer text-center cardFoot">
+                <a href="#" class="btn btn-primary m1"><span class="oi oi-calendar"></span></a>
+                <a href="#" class="btn btn-primary m1">statistics</a>
+            </div>
+
+        </div>
+
+        }
+
+
+    </div>
+
+
+}
+
+

@@ -1,0 +1,36 @@
+﻿@page "/teststatik"
+<h3>TestStatik</h3>
+
+<SfCalendar TValue="DateTime?" Value='@DateValue' Start="CalendarView.Decade"></SfCalendar>
+
+<div class="control-section">
+
+
+    <SfAccumulationChart EnableAnimation="true" EnableSmartLabels="true">
+
+        <AccumulationChartTooltipSettings Enable="true"></AccumulationChartTooltipSettings>
+        <AccumulationChartLegendSettings Visible="true"></AccumulationChartLegendSettings>
+        <AccumulationChartSeriesCollection>
+                        <AccumulationChartSeries DataSource="@DataSource" Name="Total" XName="Name" YName="Feeling" Radius="r" InnerRadius="10%">
+            </AccumulationChartSeries>
+        </AccumulationChartSeriesCollection>
+    </SfAccumulationChart>
+</div>
+
+@code {
+    public class Employeestat
+    {
+        public string Name { get; set; }
+        public int Feeling { get; set; }
+
+    }
+
+    public List<Employeestat> DataSource = new List<Employeestat>
+    {
+        new Employeestat {Name="Happy", Feeling=160 },
+        new Employeestat {Name="Angry", Feeling=100},
+        new Employeestat {Name="Fine", Feeling=105},
+    };
+    public DateTime DateValue { get; set; } = DateTime.UtcNow;
+
+}

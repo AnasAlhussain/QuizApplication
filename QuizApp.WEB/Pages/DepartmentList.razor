@@ -1,0 +1,63 @@
+﻿@page "/Department"
+@inherits DepartmentBase
+
+<h3>Departments</h3>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<!--
+<table class="table table-borderd table-striped table-hover">
+
+
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Employee
+                    </th>
+                    <th>
+                        E-mail
+                    </th>
+                    <th>
+                        Admin
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Departments)
+                {
+                <tr>
+                    <td>
+                        @item.DeptId
+                    </td>
+                    <td>
+                        @item.DepName
+                    </td>
+                    <td>
+                        @item.Employee.FullName
+                    </td>
+                    <td>
+                        @item.Employee.Email
+                    </td>
+
+
+                        @if (item.EmployeeId)
+                        {
+                          <td><i class="far fa-check-square" style="color:forestgreen"></i></td>
+                        }
+
+
+                </tr>
+                }
+
+            </tbody>
+
+    </table>
+       -->

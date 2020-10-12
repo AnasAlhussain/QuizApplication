@@ -1,0 +1,53 @@
+﻿@page "/"
+@inherits EmployeeListBase
+
+<h3>Employees</h3>
+
+@if (Employees == null)
+{
+    <div class="spinner"></div>
+
+}
+else
+{
+    <div class="card-deck">
+        @foreach (var employee in Employees)
+        {
+        <div class="card m-3 AllcardShadow" style="min-width: 18rem; max-width: 30.5%;">
+            <div class="card-header cardheader">
+                <h3 class="EmpName">@employee.FirstName</h3>
+            </div>
+            @if (employee.PhotoPath == null)
+            {
+                <div class="card-body">
+                    <label >Department :</label>
+                    <span>@employee.DepartmentId</span>
+                </div>
+
+
+            }
+
+
+            @if (employee.PhotoPath != null)
+            {
+                <div class="card-body text-center">
+                    <img class="card card-img-top imageThumbnail " src="@employee.PhotoPath" />
+                </div>
+            }
+
+            <div class="card-body">
+
+                <a herf="#"> <i class="fas fa-envelope"></i> @employee.Email</a>
+            </div>
+            <div class="card-footer text-center cardFoot">
+                <a href="#" class="btn btn-primary m1">View</a>
+                <a href="#" class="btn btn-primary m1">Edit</a>
+                <a href="#" class="btn btn-danger m1">Delet</a>
+            </div>
+
+        </div>
+
+        }
+    </div>
+
+}
