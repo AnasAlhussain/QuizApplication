@@ -36,6 +36,11 @@ namespace QuizzApp.Api.Models
             return null;
         }
 
+        public async Task<Quiz> GetById(int quizId)
+        {
+            return await appDbContext.Quizzes.FirstOrDefaultAsync(qu => qu.QizId == quizId);
+        }
+
         public async Task<IEnumerable<Quiz>> GetQuizzes()
         {
             return await appDbContext.Quizzes.ToListAsync();

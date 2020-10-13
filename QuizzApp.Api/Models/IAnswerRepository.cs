@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizzApp.Api.Models
 {
-    interface IAnswerRepository
+    public interface IAnswerRepository
     {
         Task<IEnumerable<Answer>> GetAnswers();
         Task<Answer> GetAnswerBy(int answerId);

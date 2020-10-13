@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace QuizzApp.Api.Models
 {
-    interface IQuizRepository
+   public interface IQuizRepository
     {
         Task<IEnumerable<Quiz>> GetQuizzes();
+        Task<Quiz> GetById(int quizId);
         Task<Quiz> AddQuiz(Quiz quiz);
         Task<Quiz> UpdateQuiz(Quiz quiz);
         Task<Quiz> DeleteQuiz(int quizid);

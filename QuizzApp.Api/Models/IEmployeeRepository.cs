@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizzApp.Api.Models
 {
-    interface IEmployeeRepository
+   public  interface IEmployeeRepository
     {
         Task<IEnumerable<Employe>> GetEmployees();
         Task<Employe> GetEmployee(int employeeId);

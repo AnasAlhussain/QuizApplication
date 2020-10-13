@@ -28,6 +28,11 @@ namespace QuizzApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlCon")));
+            services.AddScoped<IQuizRepository, QuizRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IAnswerRepository, AnswerRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IRecordRepository, RcordRepository>();
             services.AddControllers();
         }
 

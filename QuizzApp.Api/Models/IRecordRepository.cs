@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizzApp.Api.Models
 {
-    interface IRecordRepository
+   public  interface IRecordRepository
     {
         Task<IEnumerable<Record>> GetAllRecords();
         Task<Record> AddRecord(Record record);
