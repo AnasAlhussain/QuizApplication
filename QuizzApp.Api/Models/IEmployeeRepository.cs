@@ -12,6 +12,6 @@ namespace QuizzApp.Api.Models
         Task<Employe> GetEmployee(int employeeId);
         Task<Employe> AddEmployee(Employe employee);
         Task<Employe> UpdateEmployee(Employe employee);
-        void DeleteEmployee(int employeeId);
+        Task<Employe> DeleteEmployee(int employeeId);
     }
 }

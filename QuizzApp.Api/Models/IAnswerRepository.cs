@@ -11,7 +11,6 @@ namespace QuizzApp.Api.Models
         Task<IEnumerable<Answer>> GetAnswers();
         Task<Answer> GetAnswerBy(int answerId);
         Task<Answer> AddAnswer(Answer answer);
-        Task<Answer> CheckAnswer(Answer oldAnnswer, Answer newAnswer);
-        void DeleteAnswer(int answerId);
+        Task<Answer> DeleteAnswer(int answerId);
     }
 }

@@ -22,19 +22,18 @@ namespace QuizzApp.Api.Models
             return newQuiz.Entity;
         }
 
-        public Task<Quiz> CheckQuizType(Quiz oldQuiz, Quiz newQuiz)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public async void DeleteQuiz(int quizid)
+        public async Task<Quiz> DeleteQuiz(int quizid)
         {
             var result = await appDbContext.Quizzes.FirstOrDefaultAsync(qu => qu.QizId == quizid);
             if (result != null)
             {
                 appDbContext.Quizzes.Remove(result);
                 await appDbContext.SaveChangesAsync();
+                return result;
             }
+            return null;
         }
 
         public async Task<IEnumerable<Quiz>> GetQuizzes()
@@ -42,9 +41,19 @@ namespace QuizzApp.Api.Models
             return await appDbContext.Quizzes.ToListAsync();
         }
 
-        public Task<Quiz> UpdateQuiz(Quiz quiz)
+        public async Task<Quiz> UpdateQuiz(Quiz quiz)
         {
-            throw new NotImplementedException();
+            var result = await appDbContext.Quizzes.FirstOrDefaultAsync(qu => qu.QizId == quiz.QizId);
+            if (result != null)
+            {
+                result.Title = quiz.Title;
+                result.Description = quiz.Description;
+                result.QuizType = quiz.QuizType;
+
+                await appDbContext.SaveChangesAsync();
+                return result;
+            }
+            return null;
         }
     }
 }

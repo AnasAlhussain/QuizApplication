@@ -22,9 +22,17 @@ namespace QuizzApp.Api.Models
             return newEmploye.Entity;
         }
 
-        public void DeleteEmployee(int employeeId)
+        public async Task<Employe>  DeleteEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            var result = await appDbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
+            if (result != null)
+            {
+                appDbContext.Employees.Remove(result);
+                await appDbContext.SaveChangesAsync();
+                return result;
+            }
+            return null;
+
         }
 
         public async Task<Employe> GetEmployee(int employeeId)
@@ -38,9 +46,22 @@ namespace QuizzApp.Api.Models
             
         }
 
-        public Task<Employe> UpdateEmployee(Employe employee)
+        public async Task<Employe> UpdateEmployee(Employe employee)
         {
-            throw new NotImplementedException();
+            var result = await appDbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == employee.EmployeeId);
+            if (result != null)
+            {
+                result.FirstName = employee.FirstName;
+                result.LastName = employee.LastName;
+                result.Email = employee.Email;
+                result.PhotoPath = employee.PhotoPath;
+                result.Admin = employee.Admin;
+
+                await appDbContext.SaveChangesAsync();
+
+                return result;
+            }
+            return null;
         }
     }
 }

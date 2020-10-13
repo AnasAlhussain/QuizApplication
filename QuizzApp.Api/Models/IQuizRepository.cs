@@ -11,7 +11,6 @@ namespace QuizzApp.Api.Models
         Task<IEnumerable<Quiz>> GetQuizzes();
         Task<Quiz> AddQuiz(Quiz quiz);
         Task<Quiz> UpdateQuiz(Quiz quiz);
-        Task<Quiz> CheckQuizType(Quiz oldQuiz, Quiz newQuiz);
-        void DeleteQuiz(int quizid);
+        Task<Quiz> DeleteQuiz(int quizid);
     }
 }
