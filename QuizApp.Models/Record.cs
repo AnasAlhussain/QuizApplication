@@ -17,6 +17,11 @@ namespace QuizApp.Models
         public int AnswerId { get; set; }
 
 
+        
+
+
+
+
 
 
 
