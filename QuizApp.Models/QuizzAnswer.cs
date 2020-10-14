@@ -5,14 +5,11 @@ using System.Text;
 
 namespace QuizApp.Models
 {
-   public class QuizEmployeeList
+    public class QuizzAnswer
     {
         [Key]
         public int Id { get; set; }
-        // public Quiz Quiz { get; set; }
-        public int QuizId { get; set; }
-       // public Employe Employe { get; set; }
-        public int EmployeId { get; set; }
-
+        public Answer Answer { get; set; }
+        public Quiz Quizz { get; set; }
     }
 }

@@ -14,8 +14,9 @@ namespace QuizApp.Models
         [Display(Name = "Date of Answer")]
         public DateTime AnswerDate { get; set; }
         public int QuizId { get; set; }
-       // public Employe Employee { get; set; }
+        //public Employe Employee { get; set; }
         public int EmployeeId { get; set; }
+        public Moods Mood { get; set; }
 
 
     }

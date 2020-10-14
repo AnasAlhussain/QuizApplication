@@ -10,7 +10,7 @@ namespace QuizApp.Models
         [Key]
         public int DeptId { get; set; }
         public string DepName { get; set; }
-      // public Employe Employee { get; set; }
+       //public Employe Employee { get; set; }
         public int EmployeeId { get; set; }
 
     }

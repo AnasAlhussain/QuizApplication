@@ -12,12 +12,11 @@ namespace QuizApp.Models
         public int QizId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        [EnumDataType(typeof(Type))]
+        
         public QuizTypes QuizType { get; set; }
 
-        
-        //public Answer answer { get; set; }
         public int AnswerId { get; set; }
+
 
     }
 }

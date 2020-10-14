@@ -9,9 +9,9 @@ namespace QuizApp.Models
         Yes_No, 
         Text, 
         RedYellowGreen_WhithText,
-        RedYellowGreen_WhithoutText ,
+        RedYellowGreen_WhithoutText,
         Date,
-        Decimal ,
-        Alternativ,
+        Decimal,
+        Alternativ 
     }
 }

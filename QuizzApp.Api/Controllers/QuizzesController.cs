@@ -51,7 +51,28 @@ namespace QuizzApp.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retriving data ");
             }
         }
-       
+        [HttpPost]
+       public async Task<ActionResult<Quiz>> CreateQuiz(Quiz quiz)
+        {
+            try
+            {
+                if (quiz == null)
+                {
+                    return BadRequest();
+                }
+
+               var createdquiz = await quizRepository.AddQuiz(quiz);
+
+                return CreatedAtAction(nameof(GetQuizById), new { id = createdquiz.QizId }, createdquiz);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retriving data ");
+            }
+
+            
+        }
        
     }
 }
