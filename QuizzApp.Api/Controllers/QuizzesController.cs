@@ -70,8 +70,50 @@ namespace QuizzApp.Api.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retriving data ");
             }
-
             
+        }
+
+
+         [HttpPut]
+        public async Task<ActionResult<Quiz>> Updatequiz(int id, Quiz quiz)
+        {
+            try
+            {
+                if (id != quiz.QizId)
+                {
+                    return BadRequest("Quiz ID mismatch");
+                }
+                var quizToUpdate = await quizRepository.GetById(id);
+                if (quizToUpdate == null)
+                {
+                    return NotFound($"Quiz with ID ={id} not found");
+                }
+                return await quizRepository.UpdateQuiz(quiz);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error Updating data ");
+            }
+        }
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<Quiz>> DeletQuiz(int id) 
+        {
+            try
+            {
+                var quizToDelet = await quizRepository.GetById(id);
+
+                if (quizToDelet == null)
+                {
+                    return NotFound($"Quiz with ID = {id} not found");
+                }
+                return await quizRepository.DeleteQuiz(id);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error Deleting data ");
+            }
         }
        
     }

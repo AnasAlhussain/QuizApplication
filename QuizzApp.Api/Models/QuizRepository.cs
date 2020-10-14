@@ -54,6 +54,7 @@ namespace QuizzApp.Api.Models
                 result.Title = quiz.Title;
                 result.Description = quiz.Description;
                 result.QuizType = quiz.QuizType;
+               
 
                 await appDbContext.SaveChangesAsync();
                 return result;
