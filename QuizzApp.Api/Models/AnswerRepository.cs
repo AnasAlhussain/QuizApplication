@@ -42,7 +42,7 @@ namespace QuizzApp.Api.Models
             return await appDbContext.Answers.FirstOrDefaultAsync(a => a.AnswerId == answerId);
         }
 
-        public async  Task<IEnumerable<Answer>> GetAnswers()
+        public async Task<IEnumerable<Answer>> GetAnswers()
         {
             return await appDbContext.Answers.ToListAsync();
         }

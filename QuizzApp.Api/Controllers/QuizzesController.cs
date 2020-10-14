@@ -74,7 +74,7 @@ namespace QuizzApp.Api.Controllers
         }
 
 
-         [HttpPut]
+         [HttpPut("{id:int}")]
         public async Task<ActionResult<Quiz>> Updatequiz(int id, Quiz quiz)
         {
             try

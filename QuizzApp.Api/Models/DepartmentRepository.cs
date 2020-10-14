@@ -34,6 +34,11 @@ namespace QuizzApp.Api.Models
             return null;
         }
 
+        public async Task<Department> GetDepartment(int id)
+        {
+            return await appDbContext.Departments.FirstOrDefaultAsync(d => d.DeptId == id);
+        }
+
         public async Task<IEnumerable<Department>> GetDepartments()
         {
             return await appDbContext.Departments.ToListAsync();

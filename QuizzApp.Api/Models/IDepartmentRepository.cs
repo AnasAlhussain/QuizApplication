@@ -11,6 +11,7 @@ namespace QuizzApp.Api.Models
         Task<IEnumerable<Department>> GetDepartments();
         Task<Department> AddDepartment(Department department);
         Task<Department> DeleteDepartment(int id);
+        Task<Department> GetDepartment(int id);
 
 
     }

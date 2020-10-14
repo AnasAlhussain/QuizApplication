@@ -76,6 +76,49 @@ namespace QuizzApp.Api.Controllers
         }
 
 
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Employe>> UpdateEmployee(int id, Employe employee)
+        {
+
+            try
+            {
+                if (id != employee.EmployeeId)
+                {
+                    return BadRequest();
+                }
+                var employeeToUpdate = await employeeRepository.GetEmployee(id);
+                if (employeeToUpdate == null)
+                {
+                    return NotFound($"Employee with ID = {id} not found");
+                }
+                return await employeeRepository.UpdateEmployee(employee);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error Updating data ");
+            }
+
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<Employe>> DeleteEmployee(int id)
+        {
+            try
+            {
+                var employeeToDelet = await employeeRepository.GetEmployee(id);
+                if (employeeToDelet == null)
+                {
+                    return NotFound($"Employee with ID ={id} not found");
+                }
+                return await employeeRepository.DeleteEmployee(id);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error Deleting data ");
+            }
+        }
 
     }
 }

@@ -18,6 +18,7 @@ namespace QuizzApp.Api.Models
         public DbSet<Department> Departments { get; set; }
         public DbSet<Record> Records { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<QuizzAnswer> QuizAnswersList { get; set; }
         public DbSet<QuizEmployeeList> QuizEmployeeLists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -113,6 +114,7 @@ namespace QuizzApp.Api.Models
                  EmployeeId=2,
                  QuizId=4,
                  AnswerDate=DateTime.Today,
+                 Mood=Moods.Green
             });
             modelBuilder.Entity<Answer>().HasData(new Answer
             {
@@ -120,6 +122,7 @@ namespace QuizzApp.Api.Models
                 EmployeeId = 1,
                 QuizId = 2,
                 AnswerDate = DateTime.Today,
+                Mood=Moods.Yellow
             });
             modelBuilder.Entity<Answer>().HasData(new Answer
             {
@@ -127,6 +130,7 @@ namespace QuizzApp.Api.Models
                 EmployeeId = 3,
                 QuizId = 3,
                 AnswerDate = DateTime.Today,
+                Mood=Moods.Red
             });
             modelBuilder.Entity<Answer>().HasData(new Answer
             {
@@ -134,6 +138,7 @@ namespace QuizzApp.Api.Models
                 EmployeeId = 3,
                 QuizId = 1,
                 AnswerDate = DateTime.Today,
+                Mood=Moods.Green
             });
 
             //Seed Record 
