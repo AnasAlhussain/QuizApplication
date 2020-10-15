@@ -9,6 +9,7 @@ namespace QuizzApp.Api.Models
    public  interface IRecordRepository
     {
         Task<IEnumerable<Record>> GetAllRecords();
+        Task<Record> GetRecord(int id);
         Task<Record> AddRecord(Record record);
         Task<Record> DeleteRecord(int recordId);
     }

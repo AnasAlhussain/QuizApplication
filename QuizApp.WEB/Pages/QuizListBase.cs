@@ -10,7 +10,7 @@ namespace QuizApp.WEB.Pages
     public class QuizListBase : ComponentBase
     {
         public DateTime dateTime { get; set; } = new DateTime { };
-        public DateTime DateValue { get; set; } = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 10);
+        public DateTime DateValue { get; set; } = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day);
     public IEnumerable<Quiz> Quizzes { get; set; }
         protected override Task OnInitializedAsync()
         {

@@ -40,5 +40,10 @@ namespace QuizzApp.Api.Models
         {
             return await appDbContext.Records.ToListAsync();
         }
+
+        public async Task<Record> GetRecord(int id)
+        {
+            return await appDbContext.Records.FirstOrDefaultAsync(r => r.RecordId == id);
+        }
     }
 }
