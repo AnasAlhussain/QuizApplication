@@ -28,6 +28,7 @@ namespace QuizApp.WEB
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Identity.Application").AddCookie();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSyncfusionBlazor();
@@ -57,7 +58,8 @@ namespace QuizApp.WEB
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
