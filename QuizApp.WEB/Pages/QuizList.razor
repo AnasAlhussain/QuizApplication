@@ -20,8 +20,12 @@ else
             <div class="card-header cardheader">
                 <h3 class="EmpName">@quizzes.AnswerId</h3>
             </div>
-            <div class="card-body">
-                <SfDatePicker TValue="DateTime?" Value="@DateValue" Format="dd-MM-yyyy"></SfDatePicker>
+            <div class="card-body text-center">
+                
+                <SfDatePicker TValue="DateTime?" Value="@DateValue" Format="dd-MM-yyyy" @onclick="Decre">
+                    <button type="button" value="Add" class="btn btn-outline-default" @onclick="Decre"><i class="fas fa-arrow-circle-left"></i></button>
+                    <button type="button" value="Add" class="btn btn-outline-default" @onclick="Decre"><i class="fas fa-arrow-circle-right"></i></button>
+                </SfDatePicker>
             </div>
             <div class="card-body">
                 <h5>@quizzes.Title</h5>

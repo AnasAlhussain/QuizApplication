@@ -1,0 +1,61 @@
+﻿@page "/employeetable"
+@inherits EmployeeTableBase
+
+
+
+<h3>EmployeeTable</h3>
+
+@if (Employees == null)
+{
+    <div>spinner</div>
+}
+else
+{
+    <table class="table table-borderd table-striped table-hover">
+
+
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Department
+                </th>
+               
+                <th>
+                    Admin
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Employees)
+            {
+                <tr>
+                    <td>
+                        @item.FullName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.DepartmentId
+                    </td>
+                    
+                    @if (item.Admin)
+                    {
+                        <td><i class="far fa-check-square" style="color:forestgreen"></i></td>
+                    }
+
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+

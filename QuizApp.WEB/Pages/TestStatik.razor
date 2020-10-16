@@ -5,9 +5,12 @@
 
 <div class="control-section">
 
-    <SfCalendar TValue="DateTime?" Value='@DateValue' Start="CalendarView.Decade"></SfCalendar>
-    <SfAccumulationChart EnableAnimation="true" EnableSmartLabels="true">
+    <SfDatePicker TValue="DateTime?" Value="@DateValue" Format="dd-MM-yyyy" >
+        <button type="button" value="Add" class="btn btn-outline-default" ><i class="fas fa-arrow-circle-left"></i></button>
+        <button type="button" value="Add" class="btn btn-outline-default" ><i class="fas fa-arrow-circle-right"></i></button>
+    </SfDatePicker>
 
+    <SfAccumulationChart EnableAnimation="true" EnableSmartLabels="true">
         <AccumulationChartTooltipSettings Enable="true"></AccumulationChartTooltipSettings>
         <AccumulationChartLegendSettings Visible="true"></AccumulationChartLegendSettings>
         <AccumulationChartSeriesCollection>
@@ -18,6 +21,8 @@
 </div>
 
 @code {
+
+    //public DateTime DateValue { get; set; } = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day);
     public class Employeestat
     {
         public string Name { get; set; }

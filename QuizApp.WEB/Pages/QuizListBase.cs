@@ -11,11 +11,18 @@ namespace QuizApp.WEB.Pages
     {
         public DateTime dateTime { get; set; } = new DateTime { };
         public DateTime DateValue { get; set; } = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day);
-    public IEnumerable<Quiz> Quizzes { get; set; }
+        public IEnumerable<Quiz> Quizzes { get; set; }
         protected override Task OnInitializedAsync()
         {
             GetQuizzes();
             return base.OnInitializedAsync();
+        }
+
+        public void Decre()
+        {
+            DateTime DateValue1 = DateValue;
+            DateValue1.AddDays(-1);
+           
         }
 
        
