@@ -37,12 +37,14 @@ namespace QuizzApp.Api.Models
 
         public async Task<Employe> GetEmployee(int employeeId)
         {
-            return await appDbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
+            return await appDbContext.Employees.Include(e => e.Department)
+                .FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
         }
 
         public async Task<IEnumerable<Employe>> GetEmployees()
         {
             return await appDbContext.Employees.ToListAsync();
+             
             
         }
 

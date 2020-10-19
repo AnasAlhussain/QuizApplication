@@ -34,7 +34,12 @@ namespace QuizApp.WEB
             services.AddSyncfusionBlazor();
             services.AddHttpClient<IEmployeeService, EmployeeService>(client => 
             {
-                client.BaseAddress = new Uri("https://localhost:44306/");
+                client.BaseAddress = new Uri("https://localhost:44336/");
+            });
+
+            services.AddHttpClient<IQuizService, QuizService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44336/");
             });
            
         }

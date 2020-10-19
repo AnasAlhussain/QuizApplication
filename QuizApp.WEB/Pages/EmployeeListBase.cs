@@ -12,8 +12,8 @@ namespace QuizApp.WEB.Pages
     public class EmployeeListBase : ComponentBase
     {
 
-        [Inject]
-        public IEmployeeService EmployeeService { get; set; }
+        //[Inject]
+       // public IEmployeeService EmployeeService { get; set; }
         public IEnumerable<Employe> Employees { get; set; }
 
 

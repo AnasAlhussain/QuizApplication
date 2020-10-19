@@ -26,7 +26,7 @@ namespace QuizApp.Models
         [Display(Name = "Department Name")]
         
        
-         //public Department Department { get; set; }
+        public Department Department { get; set; }
         public int DepartmentId { get; set; }
         public string Email { get; set; }
         public string PhotoPath { get; set; }

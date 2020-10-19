@@ -7,7 +7,7 @@
 
 @if (Employees == null)
 {
-    <div>spinner</div>
+    <div class="spinner"></div>
 }
 else
 {
@@ -42,8 +42,10 @@ else
                     <td>
                         @item.Email
                     </td>
+                   
+	                
                     <td>
-                        @item.DepartmentId
+                        @(item.Department == null ? "N/A" : item.Department.DepName);
                     </td>
                     
                     @if (item.Admin)

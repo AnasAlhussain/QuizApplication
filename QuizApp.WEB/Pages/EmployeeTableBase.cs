@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using QuizApp.Models;
+using QuizApp.WEB.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,20 @@ namespace QuizApp.WEB.Pages
 {
     public class EmployeeTableBase : ComponentBase
     {
+        [Inject]
+        public IEmployeeService EmployeeService { get; set; }
         public IEnumerable<Employe> Employees { get; set; }
+        public IEnumerable<Department> Departments { get; set; }
 
        
         protected override async Task OnInitializedAsync()
         {
-            
-            await Task.Run(GetEmployees);
+            Employees=(await EmployeeService.GetAllEmployees()).ToList();
+            //await Task.Run(GetEmployees);
             
         }
 
-
+        /*
         private void GetEmployees()
         {
             Employe e1 = new Employe
@@ -54,6 +58,6 @@ namespace QuizApp.WEB.Pages
             };
             Employees = new List<Employe> { e1, e2,e3 };
         }
-
+        */
     }
 }

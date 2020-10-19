@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using QuizApp.Models;
+using QuizApp.WEB.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,21 @@ namespace QuizApp.WEB.Pages
 {
     public class QuizListBase : ComponentBase
     {
+        [Inject]
+        public IQuizService QuizService { get; set; }
+
         public DateTime dateTime { get; set; } = new DateTime { };
         public DateTime DateValue { get; set; } = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day);
         public IEnumerable<Quiz> Quizzes { get; set; }
-        protected override Task OnInitializedAsync()
+
+        
+
+        protected override async Task OnInitializedAsync()
         {
-            GetQuizzes();
-            return base.OnInitializedAsync();
+           Quizzes =  (await QuizService.GeTAllQuizzes()).ToList();
+
+           // GetQuizzes();
+           // return base.OnInitializedAsync();
         }
 
         public void Decre()
@@ -26,7 +35,7 @@ namespace QuizApp.WEB.Pages
         }
 
        
-
+        /*
         private void GetQuizzes()
         {
             Quiz q1 = new Quiz
@@ -80,5 +89,6 @@ namespace QuizApp.WEB.Pages
             };
             Quizzes = new List<Quiz> { q1, q2,q3,q4,q5,q6 };
         }
+        */
     }
 }
