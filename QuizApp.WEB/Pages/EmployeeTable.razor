@@ -11,7 +11,7 @@
 }
 else
 {
-    <table class="table table-borderd table-striped table-hover">
+    <table class="table table-borderd  table-hover">
 
 
         <thead>
@@ -35,26 +35,30 @@ else
         <tbody>
             @foreach (var item in Employees)
             {
-                <tr>
-                    <td>
-                        @item.FullName
-                    </td>
-                    <td>
-                        @item.Email
-                    </td>
-                   
-	                
-                    <td>
-                        @(item.Department == null ? "N/A" : item.Department.DepName);
-                    </td>
-                    
-                    @if (item.Admin)
-                    {
-                        <td><i class="far fa-check-square" style="color:forestgreen"></i></td>
-                    }
+            <tr>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.Email
+                </td>
 
 
-                </tr>
+                <td>
+                    @(item.Department == null ? "N/A" : item.Department.DepName)
+                </td>
+
+                @if (item.Admin)
+                {
+                    <td><i class="oi oi-check" style="color:forestgreen"></i></td>
+                }
+                else
+                {
+                    <td><i class="oi oi-x" style="color:maroon"></i></td>
+                }
+
+
+            </tr>
             }
         </tbody>
 

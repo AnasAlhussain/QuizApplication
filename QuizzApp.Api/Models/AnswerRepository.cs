@@ -15,7 +15,7 @@ namespace QuizzApp.Api.Models
         {
             this.appDbContext = appDbContext;
         }
-        public async Task<Answer> AddAnswer(Answer answer)
+        public async Task<Answer> AddAnswer(Answer answer )
         {
             var newAnswer = await appDbContext.Answers.AddAsync(answer);
             await appDbContext.SaveChangesAsync();
@@ -24,6 +24,7 @@ namespace QuizzApp.Api.Models
         }
 
        
+
         public async Task<Answer> DeleteAnswer(int answerId)
         {
             var result = await appDbContext.Answers.FirstOrDefaultAsync(a => a.AnswerId == answerId);
@@ -45,6 +46,22 @@ namespace QuizzApp.Api.Models
         public async Task<IEnumerable<Answer>> GetAnswers()
         {
             return await appDbContext.Answers.ToListAsync();
+        }
+
+        public async Task<Answer> UpdateAnswer(Answer answer)
+        {
+            var result = await appDbContext.Answers.FirstOrDefaultAsync(e => e.AnswerId == answer.AnswerId);
+
+            if (result != null)
+            {
+                result.Mood = answer.Mood;
+
+                await appDbContext.SaveChangesAsync();
+                return result;
+            }
+            return null;
+
+
         }
     }
 }

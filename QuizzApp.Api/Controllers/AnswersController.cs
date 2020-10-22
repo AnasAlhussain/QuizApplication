@@ -21,6 +21,7 @@ namespace QuizzApp.Api.Controllers
         }
 
 
+        
         [HttpGet]
         public async Task<ActionResult> GetAllAnswers()
         {
@@ -32,6 +33,26 @@ namespace QuizzApp.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retriving Answers from database");
 
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateAnswer(Answer answer)
+        {
+            try
+            {
+                if (answer == null)
+                {
+                    return BadRequest();
+                }
+                var createdAnswer = await answerRepository.AddAnswer(answer);
+                return  CreatedAtAction(nameof(GetById), new { id = createdAnswer.AnswerId }, createdAnswer);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -51,6 +72,28 @@ namespace QuizzApp.Api.Controllers
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retriving data ");
+            }
+        }
+
+        [HttpPut()]
+        public async Task<ActionResult<Answer>> UpdateAnswer(Answer answer)
+        {
+            try
+            {
+                var answerToUpdate = await answerRepository.GetAnswerBy(answer.AnswerId);
+
+                if (answerToUpdate == null)
+                {
+                    return NotFound($"Answer with ID ={answer.AnswerId} not found");
+                }
+                return await answerRepository.UpdateAnswer(answer);
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                    "Error updating data");
             }
         }
 

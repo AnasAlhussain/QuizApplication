@@ -9,6 +9,9 @@ namespace QuizApp.WEB.Services
     public interface IQuizService
     {
         Task<IEnumerable<Quiz>> GeTAllQuizzes();
+        Task<Quiz> CreateNewQuiz(Quiz newQuiz);
+        Task<Quiz> GetQizeById(int id);
+
 
     }
 }

@@ -13,6 +13,12 @@ namespace QuizApp.WEB.Pages
         [Inject]
         public IQuizService QuizService { get; set; }
 
+        [Inject]
+        public IAnswerService AnswerService { get; set; }
+
+        public Answer answer { get; set; } = new Answer();
+        public Moods ThreeFaces { get; set; } = new Moods();
+
         public DateTime dateTime { get; set; } = new DateTime { };
         public DateTime DateValue { get; set; } = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day);
         public IEnumerable<Quiz> Quizzes { get; set; }
@@ -23,14 +29,40 @@ namespace QuizApp.WEB.Pages
         {
            Quizzes =  (await QuizService.GeTAllQuizzes()).ToList();
 
-           // GetQuizzes();
-           // return base.OnInitializedAsync();
+            // GetQuizzes();
+            // return base.OnInitializedAsync();
+            answer = new Answer
+            {
+                 AnswerId=1,
+                 AnswerDate=DateTime.Now,
+                 Mood=new Moods(),
+                 QuizId=1 ,
+            };
+        }
+
+        protected async Task HandleValidSubmit()
+        {
+            Answer result = null;
+            result = await AnswerService.CreateNewAnswer(answer);
+            
+            
+            
+        }
+        protected void  HandelButtons()
+        {
+            Moods newmood = 0;
+            if (newmood == Moods.Green)
+            {
+                newmood = Moods.Green;
+            }
+
+            
         }
 
         public void Decre()
         {
-            DateTime DateValue1 = DateValue;
-            DateValue1.AddDays(-1);
+            var yesterday = DateValue.AddDays(-1);
+            
            
         }
 

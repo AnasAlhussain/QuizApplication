@@ -12,5 +12,6 @@ namespace QuizzApp.Api.Models
         Task<Answer> GetAnswerBy(int answerId);
         Task<Answer> AddAnswer(Answer answer);
         Task<Answer> DeleteAnswer(int answerId);
+        Task<Answer> UpdateAnswer(Answer answer);
     }
 }

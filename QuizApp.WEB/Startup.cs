@@ -41,7 +41,19 @@ namespace QuizApp.WEB
             {
                 client.BaseAddress = new Uri("https://localhost:44336/");
             });
-           
+            services.AddHttpClient<IAnswerService, AnswerService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44336/");
+            });
+            services.AddHttpClient<IDepartmentService, DepatmentService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44336/");
+            });
+            services.AddHttpClient<IRecordService, RecordService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44336/");
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

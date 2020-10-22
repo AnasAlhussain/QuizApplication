@@ -16,11 +16,21 @@ namespace QuizApp.WEB.Services
         {
             this.httpClient = httpClient;
         }
-        
+
+        public async Task<Employe> CreateEmployee(Employe newEmployee)
+        {
+            return await httpClient.PostJsonAsync<Employe>("api/employees", newEmployee);
+            
+        }
+
         public async Task<IEnumerable<Employe>> GetAllEmployees()
         {
             return await httpClient.GetJsonAsync<Employe[]>("api/employees");
         }
-        
+
+        public async Task<Employe> GetEmployeeById(int id)
+        {
+            return await httpClient.GetJsonAsync<Employe>($"api/employees/{id}");
+        }
     }
 }

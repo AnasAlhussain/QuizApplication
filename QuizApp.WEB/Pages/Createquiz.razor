@@ -1,0 +1,98 @@
+﻿@page "/createquiz"
+@inherits CreatequizBase
+
+<h3>Create Quiz</h3>
+<hr />
+
+<div class="col-12">
+    <h4>Enter Quiz info</h4>
+
+    <EditForm Model="quiz" OnValidSubmit="HandleValidSubmit" >
+        <div class="col-12">
+            <label for="Tilte" class="col-2 font-weight-bold">Title</label>
+            <InputText id="Tile" class="form-control col-3" @bind-Value="quiz.Title" placeholder="Tilte"></InputText>
+        </div>
+        <div class="col-12">
+            <label class="col-2 font-weight-bold">Description</label>
+            <InputText  class="form-control col-3" @bind-Value="quiz.Description" placeholder="Description"></InputText>
+        </div>
+        <div class="col-12">
+            <label id="QuizType" class="col-12 font-weight-bold">Quiz Type</label>
+            <InputSelect @bind-Value="quiz.QuizType" class="form-control">
+                @foreach (var type in Enum.GetValues(typeof(QuizApp.Models.QuizTypes)))
+                {
+                    <option value="@type">@type</option>
+                }
+            </InputSelect>
+        </div>
+        <br />
+        <div class="col-12">
+            <span class="col-2"></span>
+            <input type="submit" class="form-control col-1 btn btn-primary" value="Save" />
+            <span &nbsp;></span>
+            <input type="submit" class="form-control col-1 btn btn-primary" value="Clear" /> 
+        </div>
+    </EditForm>
+    <br />
+    <hr />
+
+</div>
+
+
+<h5>Quiz List</h5>
+
+@if (Quizzes == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <table class="table table-borderd table-striped table-hover">
+
+
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Type
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Quizzes)
+            {
+            <tr>
+                
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.QuizType
+                </td>
+
+                <!--<td>
+                    @(item.Department == null ? "N/A" : item.Department.DepName)
+                </td>
+
+                @if (item.Admin)
+                {
+                    <td><i class="far fa-check-square" style="color:forestgreen"></i></td>
+                }-->
+                
+
+
+            </tr>
+            }
+        </tbody>
+
+    </table>
+}
